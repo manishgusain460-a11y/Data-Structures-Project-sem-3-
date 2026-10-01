@@ -1,4 +1,4 @@
-# AlgoLab — Interactive DSA Visualizer
+# Interactive DSA Visualizer
 
 AlgoLab is a browser-based learning playground that helps learners understand sorting and pathfinding algorithms through animated, interactive visualizations.
 
@@ -23,7 +23,7 @@ AlgoLab is a browser-based learning playground that helps learners understand so
 
 - HTML5
 - CSS3
-- Vanilla JavaScript
+- JavaScript
 
 No framework, package installation, or build step is required.
 
