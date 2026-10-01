@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Visualizer | College Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">📊</span>
+            <h1>Algorithm Visualizer</h1>
+        </div>
+        <nav class="nav-links">
+            <button id="btn-nav-sorting" class="active">Sorting Algorithms</button>
+            <button id="btn-nav-pathfinding">Pathfinding</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- SORTING SECTION -->
+        <section id="section-sorting" class="view-section active">
+            <aside class="sidebar">
+                <h3>Sorting Controls</h3>
+                
+                <div class="control-group">
+                    <label for="sort-algo">Select Algorithm</label>
+                    <select id="sort-algo">
+                        <option value="bubble">Bubble Sort</option>
+                        <option value="selection">Selection Sort</option>
+                        <option value="insertion">Insertion Sort</option>
+                        <option value="merge">Merge Sort</option>
+                        <option value="quick">Quick Sort</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="array-size">Number of Books: <span id="size-val" class="highlight-text">30</span></label>
+                    <input type="range" id="array-size" min="10" max="100" value="30">
+                </div>
+
+                <div class="control-group">
+                    <label for="sort-speed">Pace (Speed): <span id="speed-val" class="highlight-text">3</span></label>
+                    <input type="range" id="sort-speed" min="1" max="5" value="3">
+                </div>
+
+                <div class="button-group">
+                    <button id="btn-generate" class="btn-secondary">Generate New Books</button>
+                    <button id="btn-sort" class="btn-primary">Start Sorting</button>
+                </div>
+
+                <div class="stats-panel">
+                    <h4>Real-time Stats</h4>
+                    <div class="stats-grid">
+                        <div class="stat-box"><span>Unsorted</span><strong id="stat-unsorted">30</strong></div>
+                        <div class="stat-box"><span>Sorted</span><strong id="stat-sorted" class="success-text">0</strong></div>
+                        <div class="stat-box"><span>Comparisons</span><strong id="stat-comparisons">0</strong></div>
+                        <div class="stat-box"><span>Swaps</span><strong id="stat-swaps">0</strong></div>
+                    </div>
+                </div>
+
+                <div class="complexity-box">
+                    <h4>Time Complexity</h4>
+                    <p><strong>Best: </strong><span id="comp-best">O(n)</span></p>
+                    <p><strong>Average: </strong><span id="comp-avg">O(n²)</span></p>
+                    <p><strong>Worst: </strong><span id="comp-worst">O(n²)</span></p>
+                </div>
+            </aside>
+
+            <div class="canvas-area">
+                <div class="legend sorting-legend">
+                    <div class="legend-item"><div class="color-box bg-default"></div> Unsorted</div>
+                    <div class="legend-item"><div class="color-box bg-compare"></div> Comparing</div>
+                    <div class="legend-item"><div class="color-box bg-sorted"></div> Sorted</div>
+                </div>
+                <div id="sorting-container"></div>
+            </div>
+        </section>
+
+        <!-- PATHFINDING SECTION -->
+        <section id="section-pathfinding" class="view-section">
+            <aside class="sidebar">
+                <h3>Pathfinding Controls</h3>
+                
+                <div class="control-group">
+                    <label for="path-algo">Select Algorithm</label>
+                    <select id="path-algo">
+                        <option value="bfs">Breadth-First Search (BFS)</option>
+                        <option value="dfs">Depth-First Search (DFS)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="path-speed">Pace (Speed)</label>
+                    <input type="range" id="path-speed" min="1" max="5" value="4">
+                </div>
+
+                <div class="button-group">
+                    <button id="btn-start-path" class="btn-primary">Start Search</button>
+                    <button id="btn-clear-path" class="btn-secondary">Clear Path</button>
+                    <button id="btn-clear-board" class="btn-secondary">Clear Board</button>
+                </div>
+                
+                <div class="stats-panel">
+                    <h4>Search Stats</h4>
+                    <div class="stats-grid">
+                        <div class="stat-box"><span>Explored</span><strong id="nodes-explored">0</strong></div>
+                        <div class="stat-box"><span>Path Length</span><strong id="path-length" class="success-text">0</strong></div>
+                    </div>
+                </div>
+
+                <div class="instructions-box">
+                    <h4>Instructions</h4>
+                    <ul class="instruction-list">
+                        <li><span class="icon">🖱️</span> <strong>Drag</strong> Start (Green) and Target (Red) nodes to move them.</li>
+                        <li><span class="icon">🧱</span> <strong>Click & drag</strong> empty space to draw walls.</li>
+                        <li><span class="icon">🚀</span> Hit <strong>Start</strong> to visualize the algorithm.</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="canvas-area">
+                <div class="legend">
+                    <div class="legend-item"><div class="node-legend node-start"></div> Start</div>
+                    <div class="legend-item"><div class="node-legend node-end"></div> Target</div>
+                    <div class="legend-item"><div class="node-legend node-wall"></div> Wall</div>
+                    <div class="legend-item"><div class="node-legend node-visited"></div> Explored</div>
+                    <div class="legend-item"><div class="node-legend node-path"></div> Path</div>
+                </div>
+                <div id="grid-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        Data Structures & Algorithms Visualizer | Developed by Ronak Dangi
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
